@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="User Issues - AGRI DEVLINKS">
+    <meta name="author" content="">
+
+    <title>My Issues - AGRI DEVLINKS</title>
+    
+    <!-- Custom fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/custom_style.css?ver=1.1" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #1cc88a;
+            --dark-color: #5a5c69;
+            --light-color: #f8f9fc;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), #224abe) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            background: white;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+
+        .nav-item {
+            margin: 5px 0;
+        }
+
+        .nav-link {
+            color: var(--dark-color) !important;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color) !important;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .btn-new-issue {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-new-issue:hover {
+            background-color: #224abe;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .issue-status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background-color: #f6c23e;
+            color: #fff;
+        }
+
+        .status-in-progress {
+            background-color: #4e73df;
+            color: #fff;
+        }
+
+        .status-resolved {
+            background-color: #1cc88a;
+            color: #fff;
+        }
+
+        .issue-card {
+            transition: transform 0.3s ease;
+        }
+
+        .issue-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand navbar-dark static-top">
+        <div class="container-fluid">
+            <h4 class="mb-0 text-white">AGRI DEVLINKS</h4>
+
+            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#" title="Toggle Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <span class="text-white">Welcome, User</span>
+            </form>
+
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle fa-fw"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_profile.html">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="user_issues.html">
+                        <i class="fas fa-fw fa-tasks"></i>
+                        <span>My Issues</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_reports.html">
+                        <i class="fas fa-fw fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_messages.html">
+                        <i class="fas fa-fw fa-envelope"></i>
+                        <span>Messages</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_calendar.html">
+                        <i class="fas fa-fw fa-calendar"></i>
+                        <span>Calendar</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Page Header -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">My Issues</h1>
+                    <button class="btn btn-new-issue" data-toggle="modal" data-target="#newIssueModal">
+                        <i class="fas fa-plus mr-2"></i>Report New Issue
+                    </button>
+                </div>
+
+                <!-- Issues List -->
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card issue-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="card-title mb-0">Crop Disease Identification</h5>
+                                    <span class="issue-status status-in-progress">In Progress</span>
+                                </div>
+                                <p class="card-text">Suspected fungal infection in wheat crops. Need expert analysis and treatment recommendations.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Reported: 3 days ago</small>
+                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#viewIssueModal">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4">
+                        <div class="card issue-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="card-title mb-0">Irrigation System Malfunction</h5>
+                                    <span class="issue-status status-resolved">Resolved</span>
+                                </div>
+                                <p class="card-text">Drip irrigation system not functioning properly in Section B of the farm.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Reported: 1 week ago</small>
+                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#viewIssueModal">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4">
+                        <div class="card issue-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="card-title mb-0">Soil Analysis Request</h5>
+                                    <span class="issue-status status-pending">Pending</span>
+                                </div>
+                                <p class="card-text">Need soil analysis for new plot to determine optimal crop selection.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Reported: 1 day ago</small>
+                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#viewIssueModal">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Issue Modal -->
+    <div class="modal fade" id="newIssueModal" tabindex="-1" role="dialog" aria-labelledby="newIssueModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newIssueModalLabel">Report New Issue</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Issue Title</label>
+                            <input type="text" class="form-control" placeholder="Enter issue title">
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="form-control">
+                                <option>Crop Disease</option>
+                                <option>Irrigation</option>
+                                <option>Soil Analysis</option>
+                                <option>Equipment</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" placeholder="Describe your issue in detail"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Priority</label>
+                            <select class="form-control">
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                                <option>Urgent</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Attach Photos (Optional)</label>
+                            <input type="file" class="form-control-file" multiple>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Submit Issue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Issue Modal -->
+    <div class="modal fade" id="viewIssueModal" tabindex="-1" role="dialog" aria-labelledby="viewIssueModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewIssueModalLabel">Issue Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>Crop Disease Identification</h4>
+                            <p class="text-muted">Reported: 3 days ago</p>
+                            <div class="mb-4">
+                                <h6>Description</h6>
+                                <p>Suspected fungal infection in wheat crops. Need expert analysis and treatment recommendations.</p>
+                            </div>
+                            <div class="mb-4">
+                                <h6>Status Updates</h6>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>Issue Reported</strong></p>
+                                        <small class="text-muted">3 days ago</small>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>Assigned to Specialist</strong></p>
+                                        <small class="text-muted">2 days ago</small>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>Analysis in Progress</strong></p>
+                                        <small class="text-muted">1 day ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Issue Details</h6>
+                                    <div class="mb-3">
+                                        <strong>Status:</strong>
+                                        <span class="issue-status status-in-progress">In Progress</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Priority:</strong>
+                                        <span>High</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Category:</strong>
+                                        <span>Crop Disease</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Assigned To:</strong>
+                                        <span>Dr. Smith</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin.min.js"></script>
+    <script src="plugins/validation/jquery.validate.min.js"></script>
+    <script src="plugins/validation/jquery.validate-init.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+</body>
+</html> 

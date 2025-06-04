@@ -1,372 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="User Dashboard - AGRI DEVLINKS">
+    <meta name="author" content="">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>User Dashboard - AGRI DEVLINKS</title>
+    
+    <!-- Custom fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/custom_style.css?ver=1.1" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' rel='stylesheet' />
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
 
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #1cc88a;
+            --dark-color: #5a5c69;
+            --light-color: #f8f9fc;
+        }
 
-  <title>AGRI - DEVLINKS LTD</title>
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+        }
 
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
-  <link href="css/custom_style.css?ver=1.1" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' rel='stylesheet' />
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" rel="stylesheet" />
-  
-  <link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), #224abe) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            background: white;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+
+        .nav-item {
+            margin: 5px 0;
+        }
+
+        .nav-link {
+            color: var(--dark-color) !important;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color) !important;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .stat-title {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+    </style>
 </head>
+
 <body id="page-top">
-
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-       
-    <h4 style="font-weight: bolder; font-family: sans-serif;">AGRI - DEVLINKS LTD</h4>
-
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button>
-   
-           
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-     <span >Welcome, ADMIN</span> 
-    </form>
-
     <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-     
-     
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          
-          
-          <a class="dropdown-item" href="logout.php" >Logout</a>
+    <nav class="navbar navbar-expand navbar-dark static-top">
+        <div class="container-fluid">
+            <h4 class="mb-0 text-white">AGRI DEVLINKS</h4>
+
+            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#" title="Toggle Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <span class="text-white">Welcome, User</span>
+            </form>
+
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle fa-fw"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
         </div>
-      </li>
-    </ul>
+    </nav>
 
-  </nav>
-  <!-- end navbar -->
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_profile.html">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_issues.html">
+                        <i class="fas fa-fw fa-tasks"></i>
+                        <span>My Issues</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_reports.html">
+                        <i class="fas fa-fw fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_messages.html">
+                        <i class="fas fa-fw fa-envelope"></i>
+                        <span>Messages</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user_calendar.html">
+                        <i class="fas fa-fw fa-calendar"></i>
+                        <span>Calendar</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Page Header -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+                    </a>
+                </div>
 
-<!-- Sidebar -->
-<div style="display: flex;">
-<div class="side">
-<ul class="sidebar navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span>
-      </a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-        <i class="fa fa-user"></i>
-        <span>Manage Nutritionist</span>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="#">Add Nutritionist</a>
-        <a class="dropdown-item" href="#">View Nutritionist</a>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-        <i class="fa fa-user"></i>
-        <span>Manage Farmer</span>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="add_farmer.html">Add Farmer</a>
-        <a class="dropdown-item" href="view_farmer.html">View Farmer</a>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-        <i class="fa fa-list-alt"></i>
-        <span>Manage Category</span>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="add_category.html">Add Category</a>
-        <a class="dropdown-item" href="view_category.html">View Category</a>
-    </div>
-    </li>
-     <li class="nav-item ">
-      <a class="nav-link " href="issue.html" style="color: white;">
-        <i class="fa fa-paper-plane"></i>
-        <span>Farmer Issue Requests</span>
-      </a>
-      
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-        <i class="fa fa-map-marker"></i>
-        <span>Manage Place</span>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="#">Add Place</a>
-        <a class="dropdown-item" href="#">View Place</a>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-        <i class="fa fa-user"></i>
-        <span>Manage Users</span>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="add_user.html">Add Users</a>
-        <a class="dropdown-item" href="view_user.html">View Users</a>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-        <i class="fa fa-book"></i>
-        <span>Reports</span>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="formulation.html">View Formulation</a>
-        <a class="dropdown-item" href="raw_material.html">View Raw Material</a>
-    </div>
-    </li>
-   </ul>
-</div>
-   <!-- Dashboard section -->
-<div class="content">
+                <!-- Stats Cards -->
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="stat-title">Active Issues</div>
+                                        <div class="stat-value">3</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clipboard-list stat-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <div id="wrapper">
-        <div id="content-wrapper">
-    
-          <div class="container-fluid">
-    
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
-              </li>
-              
-            </ol>
-    <div class="row">
-      <div class="col-sm-4">
-        <section class="panel panel-featured-left panel-featured-primary">
-          <div class="panel-body total">
-            <div class="widget-summary">
-              <div class="widget-summary-col widget-summary-col-icon">
-                <div class="summary-icon bg-secondary">
-                  <i class="fa fa-user"></i>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="stat-title">Messages</div>
+                                        <div class="stat-value">5</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-envelope stat-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="stat-title">Reports</div>
+                                        <div class="stat-value">8</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-file-alt stat-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="stat-title">Upcoming Events</div>
+                                        <div class="stat-value">2</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar stat-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="widget-summary-col">
-                <div class="summary">
-                  <h4 class="title">Total Veterinary</h4>
-                  <div class="info">
-                    <strong class="amount">10</strong><br>
-                     
-                  </div>
+
+                <!-- Recent Activity -->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="m-0 font-weight-bold text-primary">Recent Issues</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Issue #123 - Crop Disease</h6>
+                                            <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Status: In Progress</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Issue #122 - Irrigation System</h6>
+                                            <small>5 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Status: Resolved</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="m-0 font-weight-bold text-primary">Recent Messages</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">From: Support Team</h6>
+                                            <small>2 hours ago</small>
+                                        </div>
+                                        <p class="mb-1">Your issue has been assigned to a specialist...</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">From: System Notification</h6>
+                                            <small>1 day ago</small>
+                                        </div>
+                                        <p class="mb-1">New report available for your farm...</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="summary-footer">
-                  <a class="text-muted text-uppercase"></a>
-                </div>
-              </div>
             </div>
-          </div>
-        </section>
-      </div>
-      <div class="col-sm-4">
-        <section class="panel panel-featured-left panel-featured-primary">
-          <div class="panel-body available">
-            <div class="widget-summary">
-              <div class="widget-summary-col widget-summary-col-icon">
-                <div class="summary-icon bg-secondary">
-                  <i class="fa fa-user"></i>
-                </div>
-              </div>
-              <div class="widget-summary-col">
-                <div class="summary">
-                  <h4 class="title">Total Farmers</h4>
-                  <div class="info">
-                    <strong class="amount">54</strong><br>
-                     
-                  </div>
-                </div>
-                <div class="summary-footer">
-                  <a class="text-muted text-uppercase"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="col-sm-4">
-        <section class="panel panel-featured-left panel-featured-primary">
-          <div class="panel-body issued">
-            <div class="widget-summary">
-              <div class="widget-summary-col widget-summary-col-icon">
-                <div class="summary-icon bg-secondary">
-                  <i class="fa fa-paper-plane"></i>
-                </div>
-              </div>
-              <div class="widget-summary-col">
-                <div class="summary">
-                  <h4 class="title">Issued Requests</h4>
-                  <div class="info">
-                    <strong class="amount">2</strong><br>
-                     
-                  </div>
-                </div>
-                <div class="summary-footer">
-                  <a class="text-muted text-uppercase"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="col-sm-4">
-        <section class="panel panel-featured-left panel-featured-primary">
-          <div class="panel-body returned">
-            <div class="widget-summary">
-              <div class="widget-summary-col widget-summary-col-icon">
-                <div class="summary-icon bg-secondary">
-                  <i class="fa fa-user"></i>
-                </div>
-              </div>
-              <div class="widget-summary-col">
-                <div class="summary">
-                  <h4 class="title">Total Nutritionist</h4>
-                  <div class="info">
-                    <strong class="amount">5</strong><br>
-                     
-                  </div>
-                </div>
-                <div class="summary-footer">
-                  <a class="text-muted text-uppercase"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </section>
-      </div>
-      <div class="col-sm-4">
-        <section class="panel panel-featured-left panel-featured-primary">
-          <div class="panel-body user">
-            <div class="widget-summary">
-              <div class="widget-summary-col widget-summary-col-icon">
-                <div class="summary-icon bg-secondary">
-                  <i class="fa fa-user"></i>
-                </div>
-              </div>
-              <div class="widget-summary-col">
-                <div class="summary">
-                  <h4 class="title">Total User</h4>
-                  <div class="info">
-                    <strong class="amount">10</strong><br>
-                     
-                  </div>
-                </div>
-                <div class="summary-footer">
-                  <a class="text-muted text-uppercase"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="col-sm-4">
-        <section class="panel panel-featured-left panel-featured-primary">
-          <div class="panel-body user">
-            <div class="widget-summary">
-              <div class="widget-summary-col widget-summary-col-icon">
-                <div class="summary-icon bg-secondary">
-                  <i class="fa fa-user"></i>
-                </div>
-              </div>
-              <div class="widget-summary-col">
-                <div class="summary">
-                  <h4 class="title">Total Field Officer</h4>
-                  <div class="info">
-                    <strong class="amount">10</strong><br>
-                     
-                  </div>
-                </div>
-                <div class="summary-footer">
-                  <a class="text-muted text-uppercase"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="col-sm-4">
-        <section class="panel panel-featured-left panel-featured-primary">
-          <div class="panel-body user">
-            <div class="widget-summary">
-              <div class="widget-summary-col widget-summary-col-icon">
-                <div class="summary-icon bg-secondary">
-                  <i class="fa fa-book"></i>
-                </div>
-              </div>
-              <div class="widget-summary-col">
-                <div class="summary">
-                  <h4 class="title">Total Reports</h4>
-                  <div class="info">
-                    <strong class="amount">10</strong><br>
-                     
-                  </div>
-                </div>
-                <div class="summary-footer">
-                  <a class="text-muted text-uppercase"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+        </div>
     </div>
-    </div>
-    </div>
-      </div>
-      <a class="scroll-to-top rounded" href="#page-top">
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
-      </a>
-    
-</div>
+    </a>
 
-</div>
-   <!-- end Dashboard section -->
-
-
-  <script src="vendor/jquery/jquery.min.js"></script>
-
-
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Page level plugin JavaScript-->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="vendor/datatables/jquery.dataTables.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
-  
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
-  <!-- Demo scripts for this page-->
-  <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/demo/chart-area-demo.js"></script>
-   <script src="plugins/validation/jquery.validate.min.js"></script>
+    <!-- Core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="js/sb-admin.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="plugins/validation/jquery.validate.min.js"></script>
     <script src="plugins/validation/jquery.validate-init.js"></script>
-   
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </body>
-</html>
+</html> 
